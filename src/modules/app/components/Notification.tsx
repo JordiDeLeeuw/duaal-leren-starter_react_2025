@@ -14,11 +14,11 @@ export const Notification: FC<trashNotification> = ({
 
 			if (
 				condition.includes('rain') &&
-				trashToCollect.name === 'papier'
+				trashToCollect.name === 'Papier'
 			) {
 				issue = `🌧️ Het kan regenen op ${datum}, zet je afval geen avond ervoor buiten`;
 			} else {
-				issue = `🌞 Het is ${condition} op ${datum}`;
+				issue = `🌞 It is ${condition} on ${datum}`;
 			}
 		}
 	}

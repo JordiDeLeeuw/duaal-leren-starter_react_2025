@@ -1,35 +1,42 @@
 import styles from './app.module.scss';
 import { clsx } from 'clsx';
-import { trashService } from '~/shared/services';
-import { weatherService } from '~/shared/services';
 import { Schedule } from '../Schedule';
 import { Notification } from '../../../app/components/Notification';
+import { Loading } from '../../../app/components/Loading';
+import { useGetTrash } from '~/shared/hooks/use-get-trash';
+import { useGetWeather } from '~/shared/hooks/use-get-weather';
 
 export const App = () => {
-	let forecast = {};
-	// YOUR TRASH
-	const trashItems = trashService.getTrashItems();
-	// get name of the first trash item
-	const trashToCollect = trashItems[0];
-	// get weather data
-	weatherService.getWeather().then((data) => {
-		//pull out the forecast data
-		forecast = data.forecast;
-	});
-
-	// set date of the next collection
 	const date = '2025-04-22';
+	let trashToCollect: any = null;
+	let forecast: any = null;
 
-	return (
-		<div className={clsx(styles['p-home'])}>
-			<div className={styles['p-home__container']}>
-				<Schedule trashToCollect={trashToCollect} date={date} />
-				<Notification
-					weather={forecast}
-					datum={date}
-					trashToCollect={trashToCollect}
-				/>
+	const { trashData, trashLoading } = useGetTrash();
+	const { weatherData, weatherLoading } = useGetWeather();
+
+	if (trashLoading || weatherLoading) {
+		return (
+			<div className={clsx(styles['p-home'])}>
+				<div className={styles['p-home__container']}>
+					<Loading />
+				</div>
 			</div>
-		</div>
-	);
+		);
+	}
+	if (!trashLoading && !weatherLoading) {
+		forecast = weatherData.forecast;
+		trashToCollect = trashData?.[0];
+		return (
+			<div className={clsx(styles['p-home'])}>
+				<div className={styles['p-home__container']}>
+					<Schedule trashToCollect={trashToCollect} date={date} />
+					<Notification
+						weather={forecast}
+						datum={date}
+						trashToCollect={trashToCollect}
+					/>
+				</div>
+			</div>
+		);
+	}
 };
