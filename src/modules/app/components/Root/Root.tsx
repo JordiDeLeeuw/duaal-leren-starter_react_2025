@@ -1,4 +1,6 @@
 import { App } from '~/app';
+import '../../../../i18n/i18n.config'; // 👈 This makes sure i18n is set up BEFORE React renders
+
 import {
 	useQuery,
 	useMutation,

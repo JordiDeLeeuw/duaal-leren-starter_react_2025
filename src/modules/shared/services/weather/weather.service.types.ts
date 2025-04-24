@@ -38,7 +38,8 @@ export interface Forecast {
 		chance_of_rain: number;
 		total_precip_mm: number;
 		condition: {
-			text: string;
+			nl: string;
+			en: string;
 			icon: string;
 		};
 		hourly: [

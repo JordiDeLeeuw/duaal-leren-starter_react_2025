@@ -11,10 +11,18 @@ import { useGetWeather } from '~/shared/hooks/use-get-weather';
 import { Forecast } from '~/shared/services/weather/weather.service.types';
 import { trashItem } from '~/shared/services/trash/trash.service.types';
 
-export const Home = () => {
-	const date = '2025-04-22';
+type HomeProps = {
+	col: string;
+	wea: string;
+	iss1: string;
+	iss2: string;
+};
+
+export const Home = ({ col, wea, iss1, iss2 }: HomeProps) => {
+	const date = '2025-04-21';
 	let trashToCollect: trashItem | undefined;
 	let forecast: Forecast | undefined;
+	console.log(col, wea, iss1, iss2);
 
 	const { trashData, trashLoading } = useGetTrash();
 	const { weatherData, weatherLoading } = useGetWeather();
@@ -29,16 +37,24 @@ export const Home = () => {
 		);
 	}
 	if (!trashLoading && !weatherLoading) {
+		console.log('weatherData', weatherData);
 		forecast = weatherData?.forecast;
 		trashToCollect = trashData?.[0];
 		return (
 			<div className={clsx(styles['p-home'])}>
 				<div className={styles['p-home__container']}>
-					<Schedule trashToCollect={trashToCollect} date={date} />
+					<Schedule
+						trashToCollect={trashToCollect}
+						date={date}
+						col={col}
+					/>
 					<Notification
 						weather={forecast}
 						datum={date}
 						trashToCollect={trashToCollect}
+						wea={wea}
+						iss1={iss1}
+						iss2={iss2}
 					/>
 				</div>
 			</div>
