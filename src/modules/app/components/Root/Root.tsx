@@ -13,7 +13,8 @@ const queryClient = new QueryClient({
 	defaultOptions: {
 		queries: {
 			staleTime: 1000 * 60 * 60, // 1 hour
-			gcTime: 1000 * 60 * 60, // 1 hour
+			gcTime: 1000 * 60 * 60, // 1 hour 
+			refetchInterval: 1000 * 60 * 60, // Refetch every minute
 		},
 	},
 });
@@ -25,3 +26,5 @@ export const Root = () => {
 		</QueryClientProvider>
 	);
 };
+
+
