@@ -1,6 +1,8 @@
 import { FC } from 'react';
 import { t } from 'i18next';
 import i18n from '../../../i18n/i18n.config';
+import styles from './App/app.module.scss';
+
 import {
 	trashLanguage,
 	trashNotification,
@@ -21,14 +23,14 @@ export const Notification = ({
 	iss2,
 }: NotificationProps) => {
 	const currentLang = i18n.language as trashLanguage;
+	const trueWea: string = t(wea);
 
 	let issue = '';
-	//loop through and give the key to date and the value to the dayData
 	for (let [date, dayData] of Object.entries(weather)) {
 		if (date === datum) {
 			const condition = dayData.condition[currentLang].toLowerCase();
 			if (
-				condition.includes('rain') &&
+				(condition.includes('rain') || condition.includes('regen')) &&
 				(trashToCollect[currentLang] === 'Papier' ||
 					trashToCollect[currentLang] === 'Paper')
 			) {
@@ -40,7 +42,7 @@ export const Notification = ({
 	}
 	return (
 		<>
-			<h2>{wea}</h2>
+			<h2 className={styles['p-home__h2']}>{trueWea}</h2>
 			<p>{issue}</p>
 		</>
 	);

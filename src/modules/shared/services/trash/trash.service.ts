@@ -6,7 +6,7 @@ class TrashService {
 		return new Promise<trashItem[]>((resolve) => {
 			setTimeout(() => {
 				resolve(TRASH_MOCK);
-			}, 6000);
+			}, 1000);
 		});
 	}
 }

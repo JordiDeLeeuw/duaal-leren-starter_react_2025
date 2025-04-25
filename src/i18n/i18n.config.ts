@@ -7,7 +7,11 @@ const resources = {
 			collection: 'Next collection',
 			weatherMessage: 'Weather Forecast',
 			issue1: '🌧️ It might rain on {{date}}, please do not put your waste outside the night before',
-			issue2: '🌞 It is {{condition}} on {{date}}',
+			issue2: 'It is {{condition}} on {{date}}',
+			lan1: 'English',
+			lan2: 'Dutch',
+			title: "JORDI'S RECYCLE APP",
+			cd: 'change date',
 		},
 	},
 	nl: {
@@ -16,6 +20,10 @@ const resources = {
 			weatherMessage: 'Weerbericht',
 			issue1: '🌧️ Het kan regenen op {{date}}, zet je afval geen avond ervoor buiten',
 			issue2: ' Het is {{condition}} op {{date}}',
+			lan1: 'Engels',
+			lan2: 'Nederlands',
+			title: "JORDI'S RECYCLEER APP",
+			cd: 'verander datum',
 		},
 	},
 };

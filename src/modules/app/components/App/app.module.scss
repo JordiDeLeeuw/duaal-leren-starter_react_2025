@@ -1,25 +1,51 @@
+@import url('https://use.typekit.net/afq4ciw.css');
+
 .p-home {
-	background-color: rgb(255, 255, 255);
+	background: #8cb582;
+	background: radial-gradient(
+		circle,
+		rgba(140, 181, 130, 0.33) 0%,
+		rgba(255, 255, 255, 1) 100%
+	);
+	font-family: 'omnes-narrow', sans-serif;
+	font-weight: 400;
+	font-style: normal;
 	width: 100%;
 	height: 100vh;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	font-family: 'Roboto', sans-serif;
+	font-family: 'Omnes Pro', sans-serif;
+	color: rgb(61, 75, 57);
+	&__h2 {
+		font-size: 1.5rem;
+		color: rgb(119, 159, 122);
+		margin-bottom: 10px;
+		font-family: 'omnes-pro', sans-serif;
+		font-weight: 400;
+		font-style: normal;
+	}
 
 	&__container {
+		height: 60vh;
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
-		gap: 2rem;
+		gap: 1rem;
+		text-align: center;
 
 		&__title {
 			font-size: 2rem;
-			color: rgb(0, 0, 0);
+			color: rgb(126, 193, 128);
 			margin: 0 auto;
-			padding-top: 20px;
+			padding: 25px;
+			margin-bottom: -20px;
+			font-weight: 800;
+			font-family: 'omnes-pro', sans-serif;
+			font-weight: 700;
+			font-style: normal;
 		}
 
 		&__gif {
@@ -27,6 +53,43 @@
 			width: 400px;
 			background-size: cover;
 			background-image: url('/hi.gif');
+		}
+	}
+	&__buttons {
+		display: flex;
+		&__langbutton {
+			background-color: rgb(255, 255, 255);
+			color: rgb(140, 181, 130);
+			border: dotted;
+			border-width: 3px;
+			border-color: #8cb582;
+			padding: 10px 20px;
+			border-radius: 20px;
+			cursor: pointer;
+			font-size: 1rem;
+			transition: 0.5s;
+			margin: 0 10px;
+			&:hover {
+				border-color: rgb(61, 75, 57);
+				color: rgb(61, 75, 57);
+			}
+		}
+		&__datebutton {
+			background-color: rgb(61, 75, 57);
+
+			color: white;
+			border: none;
+			padding: 7px 7px;
+			border-radius: 20px;
+			margin: 0 10px;
+			cursor: pointer;
+			font-size: 1rem;
+			transition: 0.5s;
+
+			&:hover {
+				background-color: #ffffff;
+				color: rgb(61, 75, 57);
+			}
 		}
 	}
 }
